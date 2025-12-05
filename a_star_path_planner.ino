@@ -4,7 +4,7 @@
 #define PIN_MOTOR_PWM_RIGHT 5
 #define PIN_MOTOR_PWM_LEFT  6
 
-// ULTRASONIC PINS 
+//ULTRASONIC PINS 
 const int TRIG_PIN = 7;
 const int ECHO_PIN = 8;
 
@@ -14,7 +14,7 @@ const int TURN_SPEED  = 150;
 
 //need to TUNE
 const int MOVE_TIME = 490;       
-const int TURN_TIME = 495;      // 90 degrees
+const int TURN_TIME = 495;      //90 degrees
 const int NUDGE_TIME = 300;      // small nudge forward after the robto turns
 const int NUDGE_SPEED = 120;     // low speed for the nudge
 
@@ -127,13 +127,13 @@ void turnRight() {
 void stopMotors() {
   analogWrite(PIN_MOTOR_PWM_LEFT, 0);
   analogWrite(PIN_MOTOR_PWM_RIGHT, 0);
-  delay(200);  // let vibrations settle before scanning
+  delay(200);  //delay before scanning - this shoudl
 }
 
-// ULTRASONIC (STABILIZED READING) 
+
 float stabilizedUltrasonic() {
-  stopMotors();      // Motors fully stop before scan
-  delay(80);         // add delay - need to let vibrations fully stop
+  stopMotors();      //motors fully stop before we scan
+  delay(80);         // delay
 
   long d1 = readUltrasonicRaw();
   delay(30);
@@ -141,7 +141,7 @@ float stabilizedUltrasonic() {
   delay(30);
   long d3 = readUltrasonicRaw();
 
-  long d = min(d1, min(d2, d3));  // smallest stable reading
+  long d = min(d1, min(d2, d3)); 
   return d;
 }
 
